@@ -2,6 +2,7 @@
 #include "pokemon.h"
 #include "player.h"
 #include <stdbool.h>
+#include <time.h>
 
 int checkColisions (player *p, char dir, int **map)
 {
@@ -83,7 +84,6 @@ void move(player *p, int **map)
         {
             p->coordX++;
         }
-    
     
     default:
         break;

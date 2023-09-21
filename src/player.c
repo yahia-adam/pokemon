@@ -12,8 +12,8 @@ player *createPlayer(char*name, char*password, pokemon**pokemon)
     player->password= strdup(password);
     player->pokemon = pokemon;
 
-    player->coordX = 0;
-    player->coordY = 0;
+    player->coordX = 1;
+    player->coordY = 1;
 
     printf("%s\n",name);
     printf("%s",password);

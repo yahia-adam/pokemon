@@ -3,6 +3,7 @@
 #include "pokemon.h"
 #include "player.h"
 
+
 char *get_next(char *str, int *i)
 {
     char *name = malloc(sizeof(char)* 50);
@@ -65,5 +66,8 @@ int main(int argc, char *argv[])
     player *player =  createPlayer("adam", "sozako", pokemon_tab);
     display_pokemon(pokemon_tab);
 
+    int **map = setMap(25,30);
+    move(player, map);
+    printMap(map, player,25,30);
     return 0;
 }

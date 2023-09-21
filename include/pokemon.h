@@ -11,7 +11,8 @@ typedef struct pokemon
     char *type;
 }pokemon;
 
-void printMap(int **map, int col, int line);
+void printMap(int **map, player *p, int col, int line);
+void move(player *p, int **map);
 int **setMap(int col, int line);
 char *read_file(char *filename);
 void write_in_file(char *filename, char *content);

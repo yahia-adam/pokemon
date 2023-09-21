@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "player.h"
 
 static int SEED = 0;
 
@@ -88,7 +89,7 @@ int **setMap(int col, int line)
             //Créé un obstacle sur les bordures de la carte et à des endroits randoms
             if (lineInd == 0 || colInd == 0 || lineInd == line -1 || colInd == col - 1 || perlin > maxObst)
                 map[lineInd][colInd]= 2;
-            else if (perlin < minHerbe || perlin > maxHerbe)
+            else if (perlin < minHerbe || perlin > maxHerbe || (colInd==1 && lineInd == 1))
                 map[lineInd][colInd]= 0;
             else
                 map[lineInd][colInd]=1;
@@ -98,12 +99,18 @@ int **setMap(int col, int line)
     return map;
 }
 
-void printMap(int **map, int col, int line)
+void printMap(int **map, player *p, int col, int line)
 {
     for(int i = 0; i < line; i ++)
     {
         for(int j = 0; j < col; j++)
         {
+            if (i == p->coordY && j == p->coordX)
+            {
+                printf("o ");
+                continue;
+            }
+
             if (map[i][j]==1)
                 printf("H ");//"%d ", map[i][j]);
             else if (map[i][j]==2)
