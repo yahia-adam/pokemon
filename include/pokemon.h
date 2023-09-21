@@ -1,9 +1,6 @@
 #ifndef __POKEMON_H__
     #define __POKEMON_H__
 
-char *read_file(char *filename);
-
-
 typedef struct pokemon
 {
     char *nom_du_pokemon;
@@ -11,7 +8,10 @@ typedef struct pokemon
     float attaque;
     float defense;
     float vitesse;
-    float type;
+    char *type;
 }pokemon;
+
+char *read_file(char *filename);
+void write_in_file(char *filename, char *content);
 
 #endif/* __POKEMON_H__ */

@@ -1,6 +1,7 @@
 
 SRC	=	src/main.c \
 		src/read_file.c \
+		src/write_in_file.c\
 
 OBJ	=	$(SRC:.c=.o)
 
