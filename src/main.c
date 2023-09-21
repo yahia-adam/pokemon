@@ -64,5 +64,6 @@ int main(int argc, char *argv[])
 
     player *player =  createPlayer("adam", "sozako", pokemon_tab);
     display_pokemon(pokemon_tab);
+
     return 0;
 }
