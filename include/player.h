@@ -6,6 +6,9 @@ char *read_file(char *filename);
 
 typedef struct player
 {
+ char*name;
+ char*password;
+ pokemon **pokemon;
 
 }player;
 
