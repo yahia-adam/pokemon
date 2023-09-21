@@ -3,9 +3,18 @@
 #include "player.h"
 #include <stdbool.h>
 
-int get_battle_status(pokemon *poke1, pokemon *poke2, player_t *player, player_t *rival, int check)
+int is_team_dead(player player1)
 {
-    int check = 0;
+    for(int i = 0; i < 6; i++)
+    {
+        if (player1.pokemon[i]->pv > 0) return 0;
+    }
+    return 1
+}
+
+int get_battle_status(pokemon *poke1, pokemon *poke2, player *player1, player *rival, int check)
+{
+   // int check = 0;
     int battle = 0;
 
     if (check != 0) {
@@ -40,6 +49,8 @@ int get_battle_status(pokemon *poke1, pokemon *poke2, player_t *player, player_t
 
         return battle;
 }
+
+
 
 int check_pokemons(pokemon *poke1, pokemon *poke2)
 {
