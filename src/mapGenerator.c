@@ -69,7 +69,7 @@ float perlin2d(float x, float y, float freq, int depth)
     return fin/div;
 }
 
-int **setMap (int col, int line)
+int **setMap(int col, int line)
 {
     int **map = malloc(sizeof(int *)*line);
     srand(time(NULL))   ;

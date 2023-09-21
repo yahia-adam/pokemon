@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pokemon.h"
+#include "player.h"
 
 char *get_next(char *str, int *i)
 {
@@ -61,6 +62,7 @@ int main(int argc, char *argv[])
     }
     pokemon **pokemon_tab = init_pokemon(read_file(argv[1]));
 
+    player *player =  createPlayer("adam", "sozako", pokemon_tab);
     display_pokemon(pokemon_tab);
     return 0;
 }

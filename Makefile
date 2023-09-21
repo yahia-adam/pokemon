@@ -2,6 +2,8 @@
 SRC	=	src/main.c \
 		src/read_file.c \
 		src/write_in_file.c\
+		src/mapGenerator.c\
+		src/player.c\
 
 OBJ	=	$(SRC:.c=.o)
 
