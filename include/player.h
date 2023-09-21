@@ -8,6 +8,8 @@ typedef struct player
     char *name;
     char *password;
     pokemon **pokemon;
+    int coordX;
+    int coordY;
 } player;
 
 player *createPlayer(char*name, char*password, pokemon**pokemon);
