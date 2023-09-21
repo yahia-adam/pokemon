@@ -5,6 +5,9 @@
 
 typedef struct player
 {
+ char*name;
+ char*password;
+ pokemon **pokemon;
 
 } player;
 
