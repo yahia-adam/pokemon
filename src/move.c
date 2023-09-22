@@ -51,6 +51,17 @@ int checkColisions (player *p, char dir, int **map)
     }
 }
 
+void highGrass(player *p, int **map)
+{
+    srand(time(NULL));
+    if (map[p->coordY][p->coordX] == 1)
+    {
+        if (rand()<0.1)
+        {
+            //start fight
+        }
+    }
+}
 
 void move(player *p, int **map)
 {
@@ -62,6 +73,7 @@ void move(player *p, int **map)
         if (checkColisions(p, input, map) == 0)
         {
             p->coordY--;
+            highGrass(p,map);
         }
         break;
     
@@ -69,6 +81,7 @@ void move(player *p, int **map)
         if(checkColisions(p, input, map) ==0)
         {
             p->coordY++;
+            highGrass(p,map);
         }
         break;
 
@@ -76,6 +89,7 @@ void move(player *p, int **map)
         if (checkColisions(p, input, map) ==0)
         {
             p->coordX--;
+            highGrass(p,map);
         }
         break;
 
@@ -83,9 +97,12 @@ void move(player *p, int **map)
         if (checkColisions(p, input, map)==0)
         {
             p->coordX++;
+            highGrass(p,map);
         }
-    
+        break;
     default:
         break;
     }
+
+    
 }
