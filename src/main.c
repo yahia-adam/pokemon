@@ -21,6 +21,8 @@ player_t *createPlayer(char *name, char *password, pokemon_t **pokemon)
     player->pokemon = pokemon;
     player->item = init_item();
 
+    player->coordX=1;
+    player->coordY=1;
     return player;
 }
 
@@ -114,7 +116,7 @@ int main(int argc, char *argv[])
     print_battle_result(game, game_res);
 
     int **map = setMap(25,30);
-    move(player, map);
-    printMap(map, player,25,30);
+    move(game->player, map);
+    printMap(map, game->player,25,30);
     return 0;
 }

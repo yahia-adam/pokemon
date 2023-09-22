@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-int checkColisions (player *p, char dir, int **map)
+int checkColisions (player_t *p, char dir, int **map)
 {
     switch (dir)
     {
@@ -51,7 +51,7 @@ int checkColisions (player *p, char dir, int **map)
     }
 }
 
-void highGrass(player *p, int **map)
+void highGrass(player_t *p, int **map)
 {
     srand(time(NULL));
     if (map[p->coordY][p->coordX] == 1)
@@ -63,7 +63,7 @@ void highGrass(player *p, int **map)
     }
 }
 
-void move(player *p, int **map)
+void move(player_t *p, int **map)
 {
     char input = scanf("%c");
 
