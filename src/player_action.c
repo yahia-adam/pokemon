@@ -16,7 +16,7 @@ game_t *attack(pokemon_t *offensive, pokemon_t *defensive, game_t *game, int pla
 {
     float damage = 0;
 
-    damage = (offensive->attaque - defensive->defense) * 10;
+    damage = (offensive->attaque - defensive->defense);
     defensive->pv -= damage;
     printf("%s attack %s\n", offensive->nom_du_pokemon, defensive->nom_du_pokemon);
     printf("%s lose %f pv\n\n", defensive->nom_du_pokemon, damage);
@@ -38,6 +38,7 @@ int run_away(player_t *player)
 {
     int run = 0;
 
+    // FIX RANDOM, 1 or 0
     srand(time(NULL));
     run = rand() % 2;
 
@@ -79,9 +80,10 @@ int get_player_action(player_t *player)
 {
     int choice = 0;
 
+    printf("\nTHIS IS YOUR TURN !\n");
     printf("1. Attack\n");
     printf("2. Select a pokemon\n");
-    printf("3. Bag\n");
+    printf("3. Heal!\n");
     printf("4. Run Away\n\n");
     scanf("%d", &choice);
     if (choice == 1) {

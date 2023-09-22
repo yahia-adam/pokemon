@@ -90,21 +90,20 @@ int combat(game_t *game)
                 battle = 3;
                 break;
             }
+        if (action == 2) {
+            game->player->pokemon = select_pokemon(game->player->pokemon);
+        }
         if (fastest_pokemon(game->player->pokemon[0], game->rival->pokemon[0]) == 1) {
             if (action == 1)
                 game = attack(game->player->pokemon[0], game->rival->pokemon[0], game, 1);
-            else if (action == 2)
-                game->player->pokemon = select_pokemon(game->player->pokemon);
-            else
+            else if (action == 3)
                 game->player = use_item(game->player);
             game = attack(game->rival->pokemon[0], game->player->pokemon[0], game, 2);
         } else {
             game = attack(game->rival->pokemon[0], game->player->pokemon[0], game, 2);
             if (action == 1)
                 game = attack(game->player->pokemon[0], game->rival->pokemon[0], game, 1);
-            else if (action == 2)
-                game->player->pokemon = select_pokemon(game->player->pokemon);
-            else
+            else if (action == 3)
                 game->player = use_item(game->player);
         }
     }

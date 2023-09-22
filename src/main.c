@@ -2,6 +2,23 @@
 #include <stdlib.h>
 #include "game.h"
 
+void free_game(game_t *game)
+{
+    free(game->player->item);
+    for (int i = 0; i < game->player->len_pokemon + 1; i++)
+        free(game->player->pokemon[i]);
+    free(game->player->pokemon);
+    free(game->player);
+
+    free(game->rival->item);
+    for (int i = 0; i < game->rival->len_pokemon + 1; i++)
+        free(game->rival->pokemon[i]);
+    free(game->rival->pokemon);
+    free(game->rival);
+
+    free(game);
+}
+
 item_t *init_item(void)
 {
     item_t *item = malloc(sizeof(item_t));
@@ -12,14 +29,21 @@ item_t *init_item(void)
     return item;
 }
 
-player_t *createPlayer(char *name, char *password, pokemon_t **pokemon)
+player_t *createPlayer(char *name, char *password, pokemon_t **pokemon, char *str)
 {
     player_t *player = malloc(sizeof(player_t));
+    int len_pokemon = 0;
 
     player->name = name;
     player->password = password;
     player->pokemon = pokemon;
     player->item = init_item();
+    for(int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == '\n') {
+            len_pokemon++;
+        }
+    }
+    player->len_pokemon = len_pokemon + 1;
 
     player->coordX=1;
     player->coordY=1;
@@ -72,7 +96,7 @@ pokemon_t **init_pokemon(char *str)
 void display_pokemon(pokemon_t **p)
 {
     for (int i = 0; p[i] != NULL; i++) {
-        printf("%s{\npv = %f\nattaque = %fdefense = %f\nvitesse = %f\ntype = %s\n}\n", p[i]->nom_du_pokemon, p[i]->pv, p[i]->attaque, p[i]->defense, p[i]->vitesse, p[i]->type);
+        printf("%s{\npv = %f\nattaque = %f\ndefense = %f\nvitesse = %f\ntype = %s\n}\n", p[i]->nom_du_pokemon, p[i]->pv, p[i]->attaque, p[i]->defense, p[i]->vitesse, p[i]->type);
     }
 }
 
@@ -94,23 +118,27 @@ int main(int argc, char *argv[])
     int x, y;
     int i = 0;
     int game_res;
+    char *file_poke_player = read_file(argv[1]);
+    char *file_poke_rival = read_file(argv[2]);
 
     if (!check_input(argc, argv))
         return 84;
     
     game_t *game = malloc(sizeof(game_t));
-    pokemon_t **poke_player = init_pokemon(read_file(argv[1]));
-    pokemon_t **poke_rival = init_pokemon(read_file(argv[2]));
+    pokemon_t **poke_player = init_pokemon(file_poke_player);
+    pokemon_t **poke_rival = init_pokemon(file_poke_rival);
 
     printf("Ongoing players creation...\n\n");
-    game->player =  createPlayer("adam", "sozako", poke_player);
-    game->rival =  createPlayer("tom", "hello", poke_rival);
+    game->player =  createPlayer("adam", "sozako", poke_player, file_poke_player);
+    game->rival =  createPlayer("tom", "hello", poke_rival, file_poke_rival);
     printf("Player and Rival created!\n\n");
     printf("Player's pokemon\n");
     display_pokemon(poke_player);
     printf("\n\nRival's pokemon\n");
     display_pokemon(poke_rival);
 
+    
+    
     
 
     int **map = setMap(25,30);
@@ -130,6 +158,7 @@ int main(int argc, char *argv[])
         printf("\n\nUtilisez ZQSD pour vous déplacer, P pour quitter");
     }
     
+    free_game(game);
     free (map);
     return 0;
 }

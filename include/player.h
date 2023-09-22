@@ -18,6 +18,7 @@ typedef struct player_s
 
     int coordX;
     int coordY;
+    int len_pokemon;
 } player_t;
 
 #endif /* __PLAYER_H__ */
