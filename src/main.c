@@ -111,12 +111,25 @@ int main(int argc, char *argv[])
     printf("\n\nRival's pokemon\n");
     display_pokemon(poke_rival);
 
-    printf("\n\nCombat triggered!\n\n");
-    game_res = combat(game);
-    print_battle_result(game, game_res);
+    
 
     int **map = setMap(25,30);
-    move(game->player, map);
-    printMap(map, game->player,25,30);
+
+    int moveres=0;
+    while(moveres!=-1)
+    {
+        moveres = move(game->player, map);
+        if (moveres == 1)
+        {
+            printf("\n\nCombat triggered!\n\n");
+            game_res = combat(game);
+            print_battle_result(game, game_res);
+        }
+        printMap(map, game->player,25,30);
+
+        printf("\n\nUtilisez ZQSD pour vous déplacer, P pour quitter");
+    }
+    
+    free (map);
     return 0;
 }
