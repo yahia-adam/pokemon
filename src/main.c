@@ -115,11 +115,11 @@ int main(int argc, char *argv[])
     int x, y;
     int i = 0;
     int game_res;
-    char *file_poke_player = read_file(argv[1]);
-    char *file_poke_rival = read_file(argv[2]);
 
     if (!check_input(argc, argv))
         return 84;
+    char *file_poke_player = read_file(argv[1]);
+    char *file_poke_rival = read_file(argv[2]);
     
     game_t *game = malloc(sizeof(game_t));
     pokemon_t **poke_player = init_pokemon(file_poke_player);
