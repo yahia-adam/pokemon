@@ -1,7 +1,7 @@
 #ifndef __POKEMON_H__
     #define __POKEMON_H__
 
-typedef struct pokemon
+typedef struct pokemon_s
 {
     char *nom_du_pokemon;
     float pv;
@@ -9,7 +9,7 @@ typedef struct pokemon
     float defense;
     float vitesse;
     char *type;
-}pokemon;
+}pokemon_t;
 
 void printMap(int **map, player *p, int col, int line);
 void move(player *p, int **map);

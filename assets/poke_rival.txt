@@ -1,0 +1,6 @@
+nom_du_pokemon;pv;attaque;défense;vitesse;type
+Miaouss;80;45;35;90;Normal
+Caninos;90;51;20;60;Feu
+Abra;75;50;15;90;Psy
+Canarticho;104;40;25;60;Vol
+Magnéti;70;35;35;45;Acier

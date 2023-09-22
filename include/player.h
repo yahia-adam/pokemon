@@ -3,15 +3,21 @@
 
 #include "pokemon.h"
 
-typedef struct player
+typedef struct item_s
+{
+    char *item_name;
+    float heal;
+}item_t;
+
+typedef struct player_s
 {
     char *name;
     char *password;
-    pokemon **pokemon;
+    pokemon_t **pokemon;
+    item_t *item;
+
     int coordX;
     int coordY;
-} player;
-
-player *createPlayer(char*name, char*password, pokemon**pokemon);
+} player_t;
 
 #endif /* __PLAYER_H__ */
