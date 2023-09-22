@@ -19,4 +19,8 @@ player_t *use_item(player_t *player);
 game_t *attack(pokemon_t *offensive, pokemon_t *defensive, game_t *game, int player);
 void print_battle_result(game_t *game, int game_res);
 
+void printMap(int **map, player_t *p, int col, int line);
+int move(player_t *p, int **map);
+
+
 #endif /* __GAME_H__ */

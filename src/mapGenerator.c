@@ -99,7 +99,7 @@ int **setMap(int col, int line)
     return map;
 }
 
-void printMap(int **map, player *p, int col, int line)
+void printMap(int **map, player_t *p, int col, int line)
 {
     for(int i = 0; i < line; i ++)
     {

@@ -5,6 +5,7 @@ SRC	=	src/main.c \
 		src/mapGenerator.c\
 		src/game.c\
 		src/player_action.c\
+		src/move.c\
 
 OBJ	=	$(SRC:.c=.o)
 
