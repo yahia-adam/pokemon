@@ -15,6 +15,7 @@ typedef struct player_s
     char *password;
     pokemon_t **pokemon;
     item_t *item;
+    int len_pokemon;
 } player_t;
 
 #endif /* __PLAYER_H__ */
